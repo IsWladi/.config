@@ -7,3 +7,6 @@ mods = "Control"
 action = "Copy"
 key = "C"
 mods = "Control"
+
+[colors.primary]
+background = "#110d2b"
