@@ -1,0 +1,40 @@
+DATO: en linea de comandos, si apretas <C-r> y pones el nombre de un registro, se inserta el contenido del
+registro en la linea de comandos. ej: %s/hello world/<C-r>a/g
+
+Anclas:
+
+^: Coincide con el inicio de una línea
+$: Coincide con el final de una línea
+
+Cuantificadores:
+
+*: Coincide con cero o más ocurrencias del carácter anterior
++: Coincide con una o más ocurrencias del carácter anterior
+?: Coincide con cero o una ocurrencia del carácter anterior
+{m,n}: Coincide entre m y n veces el carácter anterior. Si se omite n, coincide al menos m veces
+
+Conjuntos de caracteres:
+
+[...]: Define un conjunto de caracteres para coincidir. Por ejemplo [abc] o [a-z]
+[^...]: Define un conjunto de caracteres para no coincidir. Por ejemplo [^abc] coincide con cualquier carácter que no sea a, b o c
+
+Alternancia y agrupamiento:
+
+|: Coincide con la expresión regular a su izquierda o a su derecha. Por ejemplo a|b coincide con “a” o “b”
+(...): Agrupa una subexpresión para aplicar cuantificadores o para capturar el texto coincidente
+
+Caracteres especiales y escape:
+
+\: Escapa el carácter siguiente para que se interprete literalmente en lugar de como un metacaracter
+\n : Salto de línea
+\r : Retorno de carro
+\t : Tabulación horizontal
+
+Abreviaciones (shorthand character classes):
+
+\d: Coincide con un dígito decimal (0-9)
+\D: Coincide con cualquier carácter que no sea un dígito decimal
+\w: Coincide con un carácter alfanumérico (letras y números) o guión bajo (_)
+\W: Coincide con cualquier carácter que no sea alfanumérico ni guión bajo.
+\s: Coincide con un espacio en blanco (espacio, tabulador, salto de línea).
+\S: Coincide con cualquier carácter que no sea un espacio en blanco
