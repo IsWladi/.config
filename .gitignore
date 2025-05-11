@@ -13,3 +13,6 @@
 !polybar/**
 !alacritty/**
 !nvim/**
+
+nvim/lua/.env
+nvim/test.*
