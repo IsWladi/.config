@@ -7,6 +7,7 @@
 !polybar/
 !alacritty/
 !picom/
+!/Qmk-Lily58-Dvorak/
 !nvim/
 
 # Y permitir todo el contenido dentro de ellas
@@ -14,6 +15,7 @@
 !polybar/**
 !alacritty/**
 !picom/**
+!/Qmk-Lily58-Dvorak/**
 !nvim/**
 
 nvim/lua/.env
