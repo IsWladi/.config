@@ -1,0 +1,15 @@
+# Ignorar todo por defecto
+*
+
+# Excepciones: permitir solo estas carpetas
+!.gitignore
+!i3/
+!polybar/
+!alacritty/
+!nvim/
+
+# Y permitir todo el contenido dentro de ellas
+!i3/**
+!polybar/**
+!alacritty/**
+!nvim/**
