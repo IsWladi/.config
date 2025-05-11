@@ -6,12 +6,14 @@
 !i3/
 !polybar/
 !alacritty/
+!picom/
 !nvim/
 
 # Y permitir todo el contenido dentro de ellas
 !i3/**
 !polybar/**
 !alacritty/**
+!picom/**
 !nvim/**
 
 nvim/lua/.env
