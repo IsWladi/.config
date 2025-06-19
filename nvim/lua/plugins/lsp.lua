@@ -24,7 +24,7 @@ return{
 
       require('mason-lspconfig').setup{
         ensure_installed = {
-          'lua_ls','ts_ls','jedi_language_server',
+          'lua_ls','ts_ls','pyright',
           'tailwindcss','jsonls','dockerls','yamlls','html',
           'rust_analyzer',
         },
@@ -43,9 +43,6 @@ return{
         capabilities = caps,
         filetypes = { 'css' },
       })
-
-      local lspconfig = require('lspconfig')
-      local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       local cmp          = require('cmp')
       local cmp_select   = {behavior = cmp.SelectBehavior.Select}
@@ -129,10 +126,8 @@ return{
 
       -- on_attach + keymaps ------------
       local function my_on_attach(_, bufnr)
-        local opts = {buffer = bufnr, remap = false}
         local hover = "[LSP] Hover"
         local diagnostic = "[LSP] Diagnostic"
-        local restart = "[LSP] Restart"
         local definition = "[LSP] Definition"
         local type_definition = "[LSP] Type Definition"
         local implementation = "[LSP] Implementation"
