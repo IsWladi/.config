@@ -3,7 +3,7 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     config = true,
-    enabled = false,
+    enabled = true,
     opts = {
         panel = {
           enabled = true,
