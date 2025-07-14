@@ -50,6 +50,8 @@ return{
         ['<C-o>']        = cmp.mapping.select_prev_item(cmp_select),
         ['<C-e>']        = cmp.mapping.select_next_item(cmp_select),
         ['<C-a>']        = cmp.mapping.confirm({ select = true }),
+        ['<C-f>'] = cmp.mapping.scroll_docs(-3),
+        ['<C-b>'] = cmp.mapping.scroll_docs(4),
         -- desactivar comportamientos indeseados
         ['<CR>']    = function(fallback) fallback() end,
         ['<Up>']    = function(fallback) fallback() end,
@@ -105,14 +107,6 @@ return{
       })
 
       require("cmp_git").setup() -- setup cmp-git
-
-      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-      -- cmp.setup.cmdline({ '/', '?' }, {
-      --   mapping = cmp.mapping.preset.cmdline(),
-      --   sources = {
-      --     { name = 'buffer' }
-      --   }
-      -- })
 
       -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline(':', {
