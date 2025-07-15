@@ -5,6 +5,8 @@ return {
   ---@type snacks.Config
   opts = {
     picker = { enabled = true },
+    bigfile = { enabled = true },
+    quickfile = { enabled = true },
   },
   keys = {
     -- Top Pickers & Explorer
