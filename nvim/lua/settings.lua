@@ -25,7 +25,7 @@ opt.colorcolumn    = "120" --columna de marco para no exceder largo de linea
 opt.undofile       = true
 local home = os.getenv("HOME") or os.getenv("USERPROFILE")
 opt.undodir = home .. "/.vim/undodir"
-opt.timeoutlen = 300 -- tiempo de espera para teclas mapeadas
+opt.timeoutlen = 500 -- tiempo de espera para teclas mapeadas
 vim.opt.laststatus = 3 -- recomendacion plugin Avante.nvim
 
 --auto comandos
