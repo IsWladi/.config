@@ -8,7 +8,22 @@ return {
 		bigfile = { enabled = true },
 		quickfile = { enabled = true },
 		image = { enabled = true },
+		dim = { enabled = true },
 	},
+
+	config = function()
+		local dim_enabled = false
+
+		vim.api.nvim_create_user_command("Dim", function()
+			if dim_enabled then
+				require("snacks").dim.disable()
+			else
+				require("snacks").dim.enable()
+			end
+			dim_enabled = not dim_enabled
+		end, {})
+	end,
+
 	keys = {
 		-- Top Pickers & Explorer
 		{
