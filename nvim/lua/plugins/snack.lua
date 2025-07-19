@@ -2,16 +2,20 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	---@type snacks.Config
-	opts = {
-		picker = { enabled = true },
-		bigfile = { enabled = true },
-		quickfile = { enabled = true },
-		image = { enabled = true },
-		dim = { enabled = true },
-	},
 
 	config = function()
+		-- setup each of the snacks modules
+		local Snacks = require("snacks")
+		Snacks.setup({
+			picker = { enabled = true },
+			bigfile = { enabled = true },
+			quickfile = { enabled = true },
+			image = { enabled = true },
+			dim = { enabled = true },
+			scroll = { enabled = true },
+		})
+
+		-- Dim toggle
 		local dim_enabled = false
 
 		vim.api.nvim_create_user_command("Dim", function()
