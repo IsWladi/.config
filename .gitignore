@@ -9,6 +9,7 @@
 !picom/
 !/Qmk-Lily58-Dvorak/
 !nvim/
+!kitty/
 
 # Y permitir todo el contenido dentro de ellas
 !i3/**
@@ -17,6 +18,7 @@
 !picom/**
 !/Qmk-Lily58-Dvorak/**
 !nvim/**
+!kitty/**
 
 nvim/lua/.env
 nvim/test.*
