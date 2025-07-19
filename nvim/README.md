@@ -9,32 +9,36 @@
 > Install requires Neovim 0.10+. Always review the code before installing a configuration.
 
 - Download the tarball
-    ```sh
-    wget https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz
-    ```
+
+  ```sh
+  wget https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz
+  ```
 
 - Uncompress the file and move
-    ```sh
-    tar xzvf nvim-linux64.tar.gz
-    sudo mv nvim-linux64 /usr/local/
-    rm nvim-linux64.tar.gz
-    ```
+
+  ```sh
+  tar xzvf nvim-linux64.tar.gz
+  sudo mv nvim-linux64 /usr/local/
+  rm nvim-linux64.tar.gz
+  ```
 
 - Create a symbolic link
-    ```sh
-    sudo ln -s /usr/local/nvim-linux64/bin/nvim /usr/local/bin/nvim
-    ```
+
+  ```sh
+  sudo ln -s /usr/local/nvim-linux64/bin/nvim /usr/local/bin/nvim
+  ```
 
 - Add an alias for nvim in the ~/.zshrc:
-    ```sh
-    alias n="nvim"
-    ```
+
+  ```sh
+  alias n="nvim"
+  ```
 
 - Clone the repository and install the plugins
-    ```sh
-    git clone git@github.com:IsWladi/Neovim ~/.config/nvim
-    nvim
-    ```
+  ```sh
+  git clone git@github.com:IsWladi/Neovim ~/.config/nvim
+  nvim
+  ```
 
 ## Chrome extension - Vimium keymaps
 
@@ -49,10 +53,12 @@
 ```
 
 ## Java Spring Boot Debugging
+
 - Execute the API in debug mode:
-    ```sh
-    mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
-    ```
+
+  ```sh
+  mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
+  ```
 
 - Open the main class of the project to load LSP.
 - Open the Controller class and set breakpoints.
