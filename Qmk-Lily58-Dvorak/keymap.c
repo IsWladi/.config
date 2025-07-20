@@ -44,6 +44,10 @@ enum custom_keycodes {
   WRIGHT_I3,
   WT,
   CLOSE_I3,
+  COPY_WIN,
+  PASTE_WIN,
+  COPY_TERM,
+  PASTE_TERM,
 };
 
 void keyboard_post_init_user(void) {
@@ -130,8 +134,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_LOWER] = LAYOUT( \
     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,                       KC_F6,       KC_F7,       KC_F8,       KC_F9,       KC_F10,      XXXXXXX,\
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,                     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     KC_AUDIO_VOL_UP, \
-    _______, XXXXXXX, XXXXXXX, KC_COPY, KC_PASTE, XXXXXXX,                     TD(TD_FORWARD_SLASH), TD(TD_INTE), TD(TD_SIM2), TD(TD_SIM4), TD(TD_SIM5), KC_AUDIO_MUTE, \
+    _______, XXXXXXX, XXXXXXX, COPY_TERM, PASTE_TERM,   XXXXXXX,                     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     KC_AUDIO_VOL_UP, \
+    _______, XXXXXXX, XXXXXXX, COPY_WIN,  PASTE_WIN, XXXXXXX,                     TD(TD_FORWARD_SLASH), TD(TD_INTE), TD(TD_SIM2), TD(TD_SIM4), TD(TD_SIM5), KC_AUDIO_MUTE, \
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,    XXXXXXX,XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     KC_AUDIO_VOL_DOWN, \
                            _______, _______, _______, _______,             _______, _______, _______, _______\
     ),

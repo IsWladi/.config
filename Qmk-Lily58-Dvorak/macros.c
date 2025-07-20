@@ -68,6 +68,30 @@ switch (keycode) {
             tap_code(KC_CAPS); // Envia la señal de bloqueo de mayúsculas
         }
         return false;
-}
-    return true;
+
+    case COPY_TERM:
+        if (record->event.pressed) {
+            tap_code16(C(S(KC_C)));  // Terminal: Ctrl+Shift+C
+        }
+        return false;
+
+    case PASTE_TERM:
+        if (record->event.pressed) {
+            tap_code16(C(S(KC_V)));  // Terminal: Ctrl+Shift+V
+        }
+        return false;
+
+    case COPY_WIN:
+        if (record->event.pressed) {
+            tap_code16(C(KC_C));  // Ctrl+C
+        }
+        return false;
+
+    case PASTE_WIN:
+        if (record->event.pressed) {
+            tap_code16(C(KC_V));  // Ctrl+V
+        }
+        return false;
+    }
+        return true;
 }
