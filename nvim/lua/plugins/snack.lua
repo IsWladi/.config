@@ -16,8 +16,7 @@ return {
 		})
 
 		-- Dim toggle
-		require("snacks").dim.enable()
-		local dim_enabled = true
+		local dim_enabled = false
 
 		vim.api.nvim_create_user_command("Dim", function()
 			if dim_enabled then
