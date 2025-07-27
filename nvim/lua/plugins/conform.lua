@@ -11,9 +11,10 @@ return {
 			json = { "prettier" },
 			markdown = { "prettier" },
 			yaml = { "prettier" },
+			xml = { "prettier" },
 		},
 		format_on_save = {
-			timeout_ms = 500,
+			timeout_ms = 1000,
 			lsp_format = "fallback",
 		},
 	},
