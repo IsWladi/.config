@@ -29,29 +29,36 @@ map("o", "n", "<Up>")
 map("o", "s", "<Right>")
 
 --buffers
-map("n", "<leader>q", ":q<CR>", { desc = "[no plugin] Exit" }) --salir
-map("n", "<leader>x", ":bdelete<CR>", { desc = "[no plugin] Delete current buffer" }) --borrar buffer actual
-map("n", "<leader>X", ":bdelete!<CR>", { desc = "[no plugin] Force delete current buffer" }) --borrar buffer actual
-map("n", "<leader>o", ":w<CR>", { desc = "[no plugin] Save" }) --guardar
-map("n", "<leader><leader>o", ":wa<CR>", { desc = "[no plugin] Save all buffers" }) --guardar todos los buffers
-map("n", "<leader>n", ":bnext<CR>", { desc = "[no plugin] Go to next buffer" })
-map("n", "<leader>t", ":bprevious<CR>", { desc = "[no plugin] Go to previous buffer" })
+map("n", "<leader>q", "<cmd>q<CR>", { desc = "[no plugin] Exit" }) --salir
+map("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "[no plugin] Delete current buffer" }) --borrar buffer actual
+map("n", "<leader>X", "<cmd>bdelete!<CR>", { desc = "[no plugin] Force delete current buffer" }) --borrar buffer actual
+map("n", "<leader>o", "<cmd>w<CR>", { desc = "[no plugin] Save" }) --guardar
+map("n", "<leader><leader>o", "<cmd>wa<CR>", { desc = "[no plugin] Save all buffers" }) --guardar todos los buffers
+map("n", "<leader>n", "<cmd>bnext<CR>", { desc = "[no plugin] Go to next buffer" })
+map("n", "<leader>t", "<cmd>bprevious<CR>", { desc = "[no plugin] Go to previous buffer" })
 
---para normal mode y visual mode, sustituciones con very very magic
-map("n", "<leader>/", ":%s/\\v//g", { desc = "[no plugin] Substitute in normal mode using very magic" })
-map("n", "<leader>//", ":g/.*/normal ", { desc = "[no plugin] put normal commands on regex matches" })
-map("v", "<leader>/", ":s/\\v//g", { desc = "[no plugin] Substitute in visual mode using very magic" })
+--para normal mode y visual mode, sustituciones con very very magic y posición de cursor automatica
+map("n", "<leader>/", [[:%s/\v//gc<Left><Left><Left><Left>]], { desc = "[no plugin] Substitute (very magic, confirm)" })
+map(
+	"x",
+	"<leader>/",
+	[[:s/\v//gc<Left><Left><Left><Left>]],
+	{ desc = "[no plugin] Substitute selection (very magic, confirm)" }
+)
+map("n", "<leader>//", [[:g//norm! ]], { desc = "[no plugin] Run :normal on last search matches" })
 
 -- change tabulations
 map("v", "(", "<gv", { desc = "[no plugin] Indent left and reselect" })
 map("v", ")", ">gv", { desc = "[no plugin] Indent right and reselect" })
 
 -- Paste without yanking
-vim.keymap.set({ "n", "v" }, "p", function()
-	local val = vim.fn.getreg("+")
-	vim.api.nvim_command([[normal! p]])
-	vim.fn.setreg("+", val)
-end, {})
+map("x", "p", [["_dp]], { desc = "[no plugin] Paste over w/o yanking" })
+map("x", "P", [["_dP]], { desc = "[no plugin] Paste over w/o yanking" })
+
+-- delete sin ensuciar yank
+map("n", "d", [["_d]], { desc = "Delete without yanking" })
+map("x", "d", [["_d]], { desc = "Delete without yanking" })
+map("n", "dd", [["_dd"]], { desc = "Delete line without yanking" })
 -- Paste without yanking
 
 -- exit terminal mode
@@ -61,5 +68,7 @@ map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 map("n", "<C-d>", "<C-d>zz", { desc = "[no plugin] Scroll down half a page and recenter" })
 map("n", "<C-u>", "<C-u>zz", { desc = "[no plugin] Scroll up half a page and recenter" })
 --buscar y centrar con m en vez de n
-map("n", "m", "nzz", { desc = "[no plugin] Search for next match and recenter" })
-map("n", "M", "Nzz", { desc = "[no plugin] Search for previous match and recenter" })
+map("n", "m", "nzzzv", { desc = "[no plugin] Next match + center" })
+map("n", "M", "Nzzzv", { desc = "[no plugin] Prev match + center" })
+
+map("n", "<Esc>", "<cmd>nohlsearch|normal! <C-L><CR>", { desc = "[no plugin] Clear search highlight and redraw" })
