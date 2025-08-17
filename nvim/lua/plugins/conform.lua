@@ -6,7 +6,7 @@ return {
 			python = { "autopep8" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
-			html = { "prettier" },
+			-- html = { "prettier" },
 			css = { "prettier" },
 			json = { "prettier" },
 			markdown = { "prettier" },
