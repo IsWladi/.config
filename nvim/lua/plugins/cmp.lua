@@ -16,11 +16,17 @@ return {
 			nerd_font_variant = "mono",
 		},
 
-		completion = { documentation = { auto_show = true } },
+		completion = {
+			documentation = { auto_show = true },
+		},
+
 		cmdline = {
 			keymap = { preset = "inherit" },
-			completion = { menu = { auto_show = true } },
+			completion = {
+				menu = { auto_show = true },
+			},
 		},
+
 		signature = { enabled = true },
 
 		snippets = { preset = "luasnip" },
