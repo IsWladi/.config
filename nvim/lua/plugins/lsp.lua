@@ -10,33 +10,31 @@ return {
 		config = function()
 			require("mason").setup()
 
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"lua_ls",
-					"ts_ls",
-					"pyright",
-					"tailwindcss",
-					"jsonls",
-					"dockerls",
-					"yamlls",
-					"html",
-					"rust_analyzer",
-					"jdtls",
-				},
+			local lspconfig = require("lspconfig")
+			local mlsp = require("mason-lspconfig")
+
+			local servers = {
+				"lua_ls",
+				"ts_ls",
+				"pyright",
+				"tailwindcss",
+				"jsonls",
+				"dockerls",
+				"yamlls",
+				"html",
+				"rust_analyzer",
+				"jdtls",
+			}
+
+			mlsp.setup({
+				ensure_installed = servers,
 				automatic_enable = { exclude = { "jdtls" } },
 			})
 
 			local caps = require("blink.cmp").get_lsp_capabilities()
 
-			-- 4. Overrides específicos
-			vim.lsp.config("lua_ls", {
+			vim.lsp.config("*", {
 				capabilities = caps,
-				settings = { Lua = { diagnostics = { globals = { "vim" } } } },
-			})
-
-			vim.lsp.config("tailwindcss", {
-				capabilities = caps,
-				filetypes = { "css" },
 			})
 
 			-- on_attach + keymaps ------------
@@ -51,31 +49,45 @@ return {
 
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover()
-				end, { buffer = 0, remap = false, desc = hover })
+				end, { buffer = bufnr, remap = false, desc = hover })
 				vim.keymap.set("n", "gd", function()
 					vim.lsp.buf.definition()
-				end, { buffer = 0, remap = false, desc = definition })
+				end, { buffer = bufnr, remap = false, desc = definition })
 				vim.keymap.set("n", "gt", function()
 					vim.lsp.buf.type_definition()
-				end, { buffer = 0, remap = false, desc = type_definition })
+				end, { buffer = bufnr, remap = false, desc = type_definition })
 				vim.keymap.set("n", "gi", function()
 					vim.lsp.buf.implementation()
-				end, { buffer = 0, remap = false, desc = implementation })
+				end, { buffer = bufnr, remap = false, desc = implementation })
 				vim.keymap.set("n", "<CR>e", function()
 					vim.diagnostic.goto_next()
-				end, { buffer = 0, remap = false, desc = diagnostic })
+				end, { buffer = bufnr, remap = false, desc = diagnostic })
 				vim.keymap.set("n", "<CR>r", function()
 					vim.lsp.buf.rename()
-				end, { buffer = 0, remap = false, desc = rename })
+				end, { buffer = bufnr, remap = false, desc = rename })
 				vim.keymap.set("n", "<CR>ca", function()
 					vim.lsp.buf.code_action()
-				end, { buffer = 0, remap = false, desc = code_action })
+				end, { buffer = bufnr, remap = false, desc = code_action })
 			end
 
 			vim.api.nvim_create_autocmd("LspAttach", {
+
 				callback = function(args)
 					my_on_attach(vim.lsp.get_client_by_id(args.data.client_id), args.buf)
 				end,
+			})
+
+			-- overrides
+			lspconfig.lua_ls.setup({
+				capabilities = caps,
+				on_attach = my_on_attach,
+				settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+			})
+
+			lspconfig.tailwindcss.setup({
+				capabilities = caps,
+				on_attach = my_on_attach,
+				filetypes = { "css" },
 			})
 
 			vim.diagnostic.config({
