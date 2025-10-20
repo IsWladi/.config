@@ -10,7 +10,6 @@ return {
 		config = function()
 			require("mason").setup()
 
-			local lspconfig = require("lspconfig")
 			local mlsp = require("mason-lspconfig")
 
 			local servers = {
@@ -78,15 +77,11 @@ return {
 			})
 
 			-- overrides
-			lspconfig.lua_ls.setup({
-				capabilities = caps,
-				on_attach = my_on_attach,
+			vim.lsp.config("lua_ls", {
 				settings = { Lua = { diagnostics = { globals = { "vim" } } } },
 			})
 
-			lspconfig.tailwindcss.setup({
-				capabilities = caps,
-				on_attach = my_on_attach,
+			vim.lsp.config("tailwindcss", {
 				filetypes = { "css" },
 			})
 

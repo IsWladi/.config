@@ -6,32 +6,15 @@
 
 ## Install Instructions
 
-> Install requires Neovim 0.10+. Always review the code before installing a configuration.
+> Install requires Neovim 0.11+. Always review the code before installing a configuration.
 
-- Download the tarball
+- Download the appimage
 
-  ```sh
-  wget https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz
-  ```
-
-- Uncompress the file and move
+- Run the following commands:
 
   ```sh
-  tar xzvf nvim-linux64.tar.gz
-  sudo mv nvim-linux64 /usr/local/
-  rm nvim-linux64.tar.gz
-  ```
-
-- Create a symbolic link
-
-  ```sh
-  sudo ln -s /usr/local/nvim-linux64/bin/nvim /usr/local/bin/nvim
-  ```
-
-- Add an alias for nvim in the ~/.zshrc:
-
-  ```sh
-  alias n="nvim"
+  chmod u+x nvim-linux-x86_64.appimage
+  mv nvim-linux-x86_64.appimage /usr/bin/nvim
   ```
 
 - Clone the repository and install the plugins
