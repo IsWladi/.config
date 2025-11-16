@@ -22,12 +22,12 @@ return {
 
 		dap.configurations.java = {
 			{
-				name = "Debug Attach MedMath (5005)",
+				name = "Debug Attach 5005",
 				type = "java",
 				request = "attach",
 				hostName = "127.0.0.1",
 				port = 5005,
-				mainClass = "com.iswladi.apimedmath.apimedmath.ApimedmathApplication",
+				-- mainClass = "com.iswladi.apimedmath.apimedmath.ApimedmathApplication",
 			},
 			{
 				name = "Debug Attach (8000)",
